@@ -4,6 +4,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: #011412;
+  background-color: #FDEDF0;
 }
 
 a {
@@ -13,4 +15,133 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.primary-nav {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 1.5em;
+  color: #D5FFF3;
+  background-color: #222;
+  color: #EEE;
+}
+
+.primary-nav button {
+  position: relative;
+  width: 30px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.primary-nav button span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #FFF;
+  transition: opacity 0.5s, transform 0.5s, top 0.5s, bottom 0.5s;
+}
+
+.primary-nav button span:nth-of-type(1) {
+  top: 0;
+}
+
+.primary-nav button span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.primary-nav button span:nth-of-type(3) {
+  bottom: 0;
+}
+
+/* Something is wrong with these angles */
+
+.primary-nav button.nav-open span:nth-of-type(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(calc(360deg + 45deg));
+}
+
+.primary-nav button.nav-open span:nth-of-type(2) {
+  opacity: 0;
+  transform: translateY(-50%) translateX(100%);
+}
+
+.primary-nav button.nav-open span:nth-of-type(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(calc(360deg + 135deg));
+}
+
+.nav-menu {
+  position: fixed;
+  right: 0;
+  top: 47.5px;
+  height: calc(100% - 47.5px);
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+
+  transform: translateX(100%);
+  transition: transform 0.5s;
+}
+
+.nav-menu.nav-open {
+  transform: translateX(0);
+}
+
+.nav-menu a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  font-size: 0.85em;
+}
+
+.nav-menu a img {
+  margin-right: 15px;
+}
+
+.fade {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(3px);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.fade.nav-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.primary-heading {
+  padding: 40px;
+  padding-top: 87.5px;
+  color: #D5FFF3;
+  background-color: #2B1221;
+  font-size: 1.5em;
+}
+
+.centerbox {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
